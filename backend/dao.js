@@ -14,11 +14,10 @@ async function fetchAppointments(upcoming, email) {
 
         if (upcoming === 'true') {
             const now = new Date();
-            const tomorrow = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+            //const tomorrow = new Date(now.getTime() + 24 * 60 * 60 * 1000);
 
             whereCondition.appointmentDate = {
-                [Sequelize.Op.gte]: now,
-                [Sequelize.Op.lt]: tomorrow,
+                [Sequelize.Op.gte]: now
             };
         }
 
