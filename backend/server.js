@@ -33,9 +33,15 @@ app.get('/appointments', async (req, res) => {
         );
         const auth = await getClientCredentials();
         const accessToken = auth.access_token;
-        const resourcePath = `${serviceURL}/employees`;
+        const resourcePath = `${serviceURL}/booking`;
 
-        const response = await axios.get(resourcePath, {
+        const response = await axios.post(resourcePath, 
+            {
+                "empId": 1,
+                "from": "string",
+                "destination": "string"
+              },
+         {
             headers: {
               'Authorization': `Bearer ${accessToken}`
             }
