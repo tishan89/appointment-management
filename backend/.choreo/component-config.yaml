@@ -20,3 +20,20 @@ spec:
       # This is only applicable to REST endpoint types.
       # The path should be relative to the Docker context.
       schemaFilePath: openapi.yaml
+
+  outbound:
+    serviceReferences:
+    - name: database:defaultdb
+      connectionConfig: 01ef9805-e5d5-162e-8f3d-d68a74e3b1d1
+      env: 
+      - from: HostName
+        to: DB_HOST
+      - from: Port
+        to: DB_PORT
+      - from: Username
+        to: DB_USER
+      - from: Password
+        to: DB_PASSWORD
+      - from: DatabaseName
+        to: DB_NAME
+
