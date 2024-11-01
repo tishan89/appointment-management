@@ -24,7 +24,7 @@ spec:
   outbound:
     serviceReferences:
     - name: database:defaultdb
-      connectionConfig: 01ef9805-e5d5-162e-8f3d-d68a74e3b1d1
+      connectionConfig: 01ef9812-479b-1c9e-9149-2e118eeb6789
       env: 
       - from: HostName
         to: DB_HOST
@@ -36,8 +36,8 @@ spec:
         to: DB_PASSWORD
       - from: DatabaseName
         to: DB_NAME
-    - name: choreo:///apifirst/subsctest/tbking/c95d2/v1/PUBLIC
-      connectionConfig: 01ef9809-60ec-1480-b80a-dd4537c7dead
+    - name: choreo:///apifirst/subsctest/bkking/c95d2/v1/PUBLIC
+      connectionConfig: 01ef9812-276c-10ae-8790-e62a29b72054
       env:
       - from: ServiceURL
         to: svcurl
