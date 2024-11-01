@@ -2,7 +2,8 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
-import oauth from 'axios-oauth-client'
+const oauth = require('axios-oauth-client')
+
 const { getAppointmentById, fetchAppointments, createAppointment, updateAppointment, getAppointmentTypes } = require('./dao');  // Adjust the path as necessary
 
 const app = express();
