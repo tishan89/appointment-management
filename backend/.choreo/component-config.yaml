@@ -36,4 +36,17 @@ spec:
         to: DB_PASSWORD
       - from: DatabaseName
         to: DB_NAME
+   - name: choreo:///apifirst/subsctest/tbking/c95d2/v1/PUBLIC
+      connectionConfig: 01ef9809-60ec-1480-b80a-dd4537c7dead
+      env:
+      - from: ServiceURL
+        to: svcurl
+      - from: ConsumerKey
+        to: ck
+      - from: ConsumerSecret
+        to: cs
+      - from: TokenURL
+        to: token
+
+
 
