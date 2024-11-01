@@ -47,7 +47,7 @@ app.get('/appointments', async (req, res) => {
             }
         });
 
-        console.log(response);
+        console.log("response", response.data);
         
         res.status(200).send(appointments);
     } catch (error) {
