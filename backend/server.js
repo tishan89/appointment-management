@@ -47,12 +47,9 @@ app.get('/appointments', async (req, res) => {
             }
         });
 
-        const data = {
-            emps: response.data,
-            apps: appointments
-        }
+        console.log(response);
         
-        res.status(200).send(data);
+        res.status(200).send(appointments);
     } catch (error) {
         console.error('Error fetching appointments:', error);
         res.status(500).send(error.message);
