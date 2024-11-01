@@ -2,6 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const bodyParser = require('body-parser');
 const axios = require('axios');
+import oauth from 'axios-oauth-client'
 const { getAppointmentById, fetchAppointments, createAppointment, updateAppointment, getAppointmentTypes } = require('./dao');  // Adjust the path as necessary
 
 const app = express();
@@ -18,8 +19,33 @@ app.get('/appointments', async (req, res) => {
         }
 
         const appointments = await fetchAppointments(upcoming, email);
+        const serviceURL = process.env.svcurl;
+        const cs = process.env.cs;
+        const ck = process.env.ck;
+        const tu = process.env.token;
+        // consumerKey, consumerSecret and tokenUrl represent variables to which respective environment variables were read
+        const getClientCredentials = oauth.clientCredentials(
+        axios.create(),
+        tu,
+        ck,
+        cs
+        );
+        const auth = await getClientCredentials();
+        const accessToken = auth.access_token;
+        const resourcePath = `${serviceURL}/employees`;
+
+        const response = await axios.get(resourcePath, {
+            headers: {
+              'Authorization': `Bearer ${accessToken}`
+            }
+        });
+
+        const data = {
+            emps: response.data,
+            apps: appointments
+        }
         
-        res.status(200).send(appointments);
+        res.status(200).send(data);
     } catch (error) {
         console.error('Error fetching appointments:', error);
         res.status(500).send(error.message);
