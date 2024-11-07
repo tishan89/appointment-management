@@ -11,14 +11,12 @@ const BookingForm = ({ userDetails, handleOpenSnackbar, onBookingSuccess }) => {
     const defaultAppointmentDate = add(startOfDay(new Date()), { days: 1, hours: 10 });
 
     const [name, setName] = useState(userDetails.name || userDetails.username);
-    const [phoneNumber, setPhoneNumber] = useState('');
     const [service, setService] = useState('');
     const [appointmentDate, setAppointmentDate] = useState(defaultAppointmentDate);
     const [services, setServices] = useState([]); // State to store fetched services
     const [loadingServices, setLoadingServices] = useState(false);
     const [errors, setErrors] = useState({
         name: '',
-        phoneNumber: '',
         service: '',
         appointmentDate: '',
     });
@@ -43,7 +41,7 @@ const BookingForm = ({ userDetails, handleOpenSnackbar, onBookingSuccess }) => {
     }, [userDetails, handleOpenSnackbar]);
 
     const validateForm = () => {
-        let tempErrors = { name: '', service: '', appointmentDate: '', phoneNumber: '' };
+        let tempErrors = { name: '', service: '', appointmentDate: '' };
         let isValid = true;
 
         if (!name) {
@@ -61,16 +59,6 @@ const BookingForm = ({ userDetails, handleOpenSnackbar, onBookingSuccess }) => {
             isValid = false;
         }
 
-        // Basic validation for phone number
-        const phoneRegex = /^[0-9]{10}$/; // Adjust the regex according to your needs
-        if (!phoneNumber) {
-            tempErrors.phoneNumber = 'Phone number is required.';
-            isValid = false;
-        } else if (!phoneRegex.test(phoneNumber)) {
-            tempErrors.phoneNumber = 'Phone number is 10 digits.';
-            isValid = false;
-        }
-
         setErrors(tempErrors);
         return isValid;
     };
@@ -83,7 +71,6 @@ const BookingForm = ({ userDetails, handleOpenSnackbar, onBookingSuccess }) => {
 
         const appointmentDetails = {
             name,
-            phoneNumber,
             service,
             appointmentDate,
             email: userDetails.email, // Include the email in your appointment details
@@ -98,7 +85,6 @@ const BookingForm = ({ userDetails, handleOpenSnackbar, onBookingSuccess }) => {
             // Reset form fields
             setService('');
             setAppointmentDate(defaultAppointmentDate);
-            setPhoneNumber('');
         } catch (error) {
             console.error('Booking failed:', error);
             handleOpenSnackbar('Failed to book the appointment. Please try again.');
@@ -118,17 +104,6 @@ const BookingForm = ({ userDetails, handleOpenSnackbar, onBookingSuccess }) => {
                 fullWidth
                 margin="normal"
                 variant="outlined"
-            />
-            <TextField
-                label="Phone Number"
-                value={phoneNumber}
-                onChange={(e) => setPhoneNumber(e.target.value)}
-                error={!!errors.phoneNumber}
-                helperText={errors.phoneNumber}
-                fullWidth
-                margin="normal"
-                variant="outlined"
-                type="tel" // Suggests to browsers that this input should be treated as a telephone number
             />
             <TextField
                 select
