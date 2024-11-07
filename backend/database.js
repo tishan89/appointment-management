@@ -16,7 +16,7 @@ const sequelize = new Sequelize(
   }
 );
 
-console.log(process.env.CHOREO_APPOINTMENTDB_HOST, process.env.CHOREO_APPOINTMENTDB_USER, process.env.CHOREO_APPOINTMENTDB_PASSWORD, process.env.CHOREO_APPOINTMENTDB_DATABASE, process.env.CHOREO_APPOINTMENTDB_PORT);
+console.log(process.env.CHOREO_APPOINTMENTDB_HOSTNAME, process.env.CHOREO_APPOINTMENTDB_USERNAME, process.env.CHOREO_APPOINTMENTDB_PASSWORD, process.env.CHOREO_APPOINTMENTDB_DATABASENAME, process.env.CHOREO_APPOINTMENTDB_PORT);
 
 sequelize.authenticate().then(() => {
   console.log('Connection has been established successfully.');
