@@ -1,10 +1,10 @@
 const axios = require('axios');
 
 const api = axios.create({
-    baseURL: process.env.CHOREO_KKJKS_SERVICEURL,
+    baseURL: process.env.CHOREO_USERMANAGERCONNECTION_SERVICEURL,
     headers: {
       'Content-Type': 'application/json',
-      'Choreo-API-Key': process.env.CHOREO_KKJKS_CHOREOAPIKEY,
+      'Choreo-API-Key': process.env.CHOREO_USERMANAGERCONNECTION_CHOREOAPIKEY,
     }
   });
 
