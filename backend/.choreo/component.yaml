@@ -1,0 +1,25 @@
+# +required The configuration file schema version
+schemaVersion: 1.1
+
+# +optional Incoming connection details for the component
+endpoints:
+  # +required Unique name for the endpoint.
+  # This name will be used when generating the managed API
+  - name: appointmentsvc
+    # +optional Display name for the endpoint.
+    displayName: Appointment Service
+    service:
+      basePath: /
+      port: 8080
+    type: REST
+    networkVisibilities:
+      - Public
+    schemaFilePath: openapi.yaml
+
+
+dependencies:
+    connectionReferences:
+    - name: TwilioConnection
+      resourceRef: thirdparty:TwilioMessagingAPI/v1
+    - name: kkjks
+      resourceRef: service:/apifirstdemo/user-manager/v1/bc224/ORGANIZATION

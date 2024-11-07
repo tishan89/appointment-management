@@ -1,12 +1,14 @@
 import axios from 'axios';
 
 const api = axios.create({
-    baseURL: process.env.API_URL,
+    baseURL: process.env.CHOREO_KKJKS_SERVICEURL,
     headers: {
       'Content-Type': 'application/json',
-      'Choreo-API-Key': process.env.API_Key,
+      'Choreo-API-Key': process.env.CHOREO_KKJKS_CHOREOAPIKEY,
     }
   });
+
+console.log(process.env.CHOREO_KKJKS_SERVICEURL, process.env.CHOREO_KKJKS_CHOREOAPIKEY);
 
 const getUserDetails = async (email) => {
     try {
