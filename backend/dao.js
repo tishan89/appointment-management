@@ -71,7 +71,7 @@ async function createAppointment(appointmentDetails) {
             .create({
                 to: phoneNumber,
                 from: '+12312250869',
-                body: `Hi ${userName}, \nYour appointment for ${service} has been created. \n Date: ${appointmentDate}`,
+                body: `Hi ${userName}, \nYour appointment for ${service} has been created. \n Date: ${new Date(appointmentDate).toLocaleString()}`,
             })
             .then(message => console.log(message.sid));
         return newAppointment;
