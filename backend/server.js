@@ -20,34 +20,6 @@ app.get('/appointments', async (req, res) => {
         }
 
         const appointments = await fetchAppointments(upcoming, email);
-        const serviceURL = process.env.svcurl;
-        const cs = process.env.cs;
-        const ck = process.env.ck;
-        const tu = process.env.token;
-        // consumerKey, consumerSecret and tokenUrl represent variables to which respective environment variables were read
-        const getClientCredentials = oauth.clientCredentials(
-        axios.create(),
-        tu,
-        ck,
-        cs
-        );
-        const auth = await getClientCredentials();
-        const accessToken = auth.access_token;
-        const resourcePath = `${serviceURL}/booking`;
-
-        const response = await axios.post(resourcePath, 
-            {
-                "empId": 1,
-                "from": "string",
-                "destination": "string"
-              },
-         {
-            headers: {
-              'Authorization': `Bearer ${accessToken}`
-            }
-        });
-
-        console.log("response", response.data);
         
         res.status(200).send(appointments);
     } catch (error) {

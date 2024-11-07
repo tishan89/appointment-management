@@ -3,6 +3,11 @@ require('dotenv').config();
 const { Sequelize } = require('sequelize');
 const Appointment = require('./appointmentModel'); // Import the model
 
+const accountSid = "";
+const authToken = "";
+const client = require('twilio')(accountSid, authToken);
+const getUserDetails = require('./user_manager');
+
 // Sync Sequelize models
 Appointment.sequelize.sync().then(() => {
     console.log(`Database & tables created!`);
@@ -55,8 +60,17 @@ async function getAppointmentById(id) {
 
 async function createAppointment(appointmentDetails) {
     try {
-        const { name, service, phoneNumber, email, appointmentDate } = appointmentDetails;
+        const { name, service, email, appointmentDate } = appointmentDetails;
         const newAppointment = await Appointment.create({ name, service, phoneNumber, email, appointmentDate });
+        const user = await getUserDetails(email);
+        const { name: userName, phoneNumber: userPhoneNumber } = user;
+        client.messages
+            .create({
+                to: userPhoneNumber,
+                from: '+18777804236',
+                body: `Hi ${userName}, \nYour appointment for ${service} has been created. \n Date: ${appointmentDate}`,
+            })
+            .then(message => console.log(message.sid));
         return newAppointment;
     } catch (error) {
         console.error('Error booking appointment:', error);
