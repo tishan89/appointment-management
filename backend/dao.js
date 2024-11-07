@@ -64,12 +64,12 @@ async function createAppointment(appointmentDetails) {
     try {
         const { name, service, email, appointmentDate } = appointmentDetails;
         const user = await getUserDetails(email);
-        const { name: userName, phoneNumber: userPhoneNumber } = user;
+        const { name: userName, phoneNumber } = user;
         console.log(user);
-        const newAppointment = await Appointment.create({ name, service, userPhoneNumber, email, appointmentDate });
+        const newAppointment = await Appointment.create({ name, service, phoneNumber, email, appointmentDate });
         client.messages
             .create({
-                to: userPhoneNumber,
+                to: phoneNumber,
                 from: '+18777804236',
                 body: `Hi ${userName}, \nYour appointment for ${service} has been created. \n Date: ${appointmentDate}`,
             })
