@@ -8,8 +8,6 @@ const authToken = process.env.CHOREO_TWILIOCONNECTION_TOKEN;
 const client = require('twilio')(accountSid, authToken);
 const getUserDetails = require('./user_manager');
 
-console.log(accountSid, authToken);
-
 // Sync Sequelize models
 Appointment.sequelize.sync().then(() => {
     console.log(`Database & tables created!`);
@@ -65,7 +63,6 @@ async function createAppointment(appointmentDetails) {
         const { name, service, email, appointmentDate } = appointmentDetails;
         const user = await getUserDetails(email);
         const { name: userName, phoneNumber } = user;
-        console.log(user);
         const newAppointment = await Appointment.create({ name, service, phoneNumber, email, appointmentDate });
         client.messages
             .create({

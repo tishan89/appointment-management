@@ -8,8 +8,6 @@ const api = axios.create({
     }
   });
 
-console.log(process.env.CHOREO_KKJKS_SERVICEURL, process.env.CHOREO_KKJKS_CHOREOAPIKEY);
-
 const getUserDetails = async (email) => {
     try {
         const response = await api.get(`/users/${email}`);
