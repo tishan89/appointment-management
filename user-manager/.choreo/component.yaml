@@ -1,0 +1,17 @@
+# +required The configuration file schema version
+schemaVersion: 1.1
+
+# +optional Incoming connection details for the component
+endpoints:
+  # +required Unique name for the endpoint.
+  # This name will be used when generating the managed API
+  - name: user-manager
+    # +optional Display name for the endpoint.
+    displayName: User Manager
+    service:
+      basePath: /users/v1
+      port: 8080
+    type: REST
+    networkVisibilities:
+      - Organization
+    schemaFilePath: openapi.yaml
