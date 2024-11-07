@@ -63,9 +63,9 @@ async function getAppointmentById(id) {
 async function createAppointment(appointmentDetails) {
     try {
         const { name, service, email, appointmentDate } = appointmentDetails;
-        const newAppointment = await Appointment.create({ name, service, phoneNumber, email, appointmentDate });
         const user = await getUserDetails(email);
         const { name: userName, phoneNumber: userPhoneNumber } = user;
+        const newAppointment = await Appointment.create({ name, service, userPhoneNumber, email, appointmentDate });
         client.messages
             .create({
                 to: userPhoneNumber,
