@@ -65,6 +65,7 @@ async function createAppointment(appointmentDetails) {
         const { name, service, email, appointmentDate } = appointmentDetails;
         const user = await getUserDetails(email);
         const { name: userName, phoneNumber: userPhoneNumber } = user;
+        console.log(user);
         const newAppointment = await Appointment.create({ name, service, userPhoneNumber, email, appointmentDate });
         client.messages
             .create({

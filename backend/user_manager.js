@@ -13,6 +13,7 @@ console.log(process.env.CHOREO_KKJKS_SERVICEURL, process.env.CHOREO_KKJKS_CHOREO
 const getUserDetails = async (email) => {
     try {
         const response = await api.get(`/users/${email}`);
+        console.log(response);
         return response.data;
     } catch (error) {
         console.error('Error fetching user details:', error);
