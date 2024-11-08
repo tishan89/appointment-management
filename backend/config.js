@@ -1,5 +1,5 @@
 // Datbase configruation
-const dbHost = process.env.CHOREO_APPOINTMENTDBCONNECTION_HOSTNAME; //process.env.<variable_name>;
+const dbHost = process.env.CHOREO_APPOINTMENTDBCONNECTION_HOSTNAME;
 const dbUser = process.env.CHOREO_APPOINTMENTDBCONNECTION_USERNAME;
 const dbPassword = process.env.CHOREO_APPOINTMENTDBCONNECTION_PASSWORD;
 const dbName = process.env.CHOREO_APPOINTMENTDBCONNECTION_DATABASENAME;

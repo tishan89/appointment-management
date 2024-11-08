@@ -15,7 +15,7 @@ dependencies:
     connectionReferences:
     - name: UserManagerConnection
       resourceRef: service:/apifirstdemo/user-manager/v1/bc224/ORGANIZATION
-    - name: AppointmentDBConnection
-      resourceRef: database:AppointmentsDB/appointmentDB-dev
     - name: TwilioConnection
       resourceRef: thirdparty:TwilioMessagingAPI/v1
+    - name: AppointmentDbConnection
+      resourceRef: database:AppointmentsDB/appointmentDB-dev  
