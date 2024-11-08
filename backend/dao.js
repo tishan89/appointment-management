@@ -2,10 +2,9 @@ require('dotenv').config();
 
 const { Sequelize } = require('sequelize');
 const Appointment = require('./appointmentModel'); // Import the model
+import {twilioAccountSid, twilioAuthToken} from './config';
 
-const accountSid = process.env.CHOREO_TWILIOCONNECTION_ACCOUNTSID;
-const authToken = process.env.CHOREO_TWILIOCONNECTION_TOKEN;
-const client = require('twilio')(accountSid, authToken);
+const client = require('twilio')(twilioAccountSid, twilioAuthToken);
 const getUserDetails = require('./user_manager');
 
 // Sync Sequelize models

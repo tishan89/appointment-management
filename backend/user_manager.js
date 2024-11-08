@@ -1,10 +1,11 @@
 const axios = require('axios');
+import {userManagerServiceUrl, userManagerAPIkey} from './config';
 
 const api = axios.create({
-    baseURL: process.env.CHOREO_USERMANAGERCONNECTION_SERVICEURL,
+    baseURL: userManagerServiceUrl,
     headers: {
       'Content-Type': 'application/json',
-      'Choreo-API-Key': process.env.CHOREO_USERMANAGERCONNECTION_CHOREOAPIKEY,
+      'Choreo-API-Key': userManagerAPIkey,
     }
   });
 
