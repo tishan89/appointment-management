@@ -1,5 +1,7 @@
 const { Sequelize } = require('sequelize');
-import {dbHost, dbName, dbUser, dbPassword, dbPort} from './config';
+const configs = require('./config');
+
+const { dbHost, dbName, dbUser, dbPassword, dbPort } = configs;
 
 const sequelize = new Sequelize(
   dbName,

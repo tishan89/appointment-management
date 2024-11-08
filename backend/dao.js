@@ -2,7 +2,9 @@ require('dotenv').config();
 
 const { Sequelize } = require('sequelize');
 const Appointment = require('./appointmentModel'); // Import the model
-import {twilioAccountSid, twilioAuthToken} from './config';
+const configs = require('./config');
+
+const { twilioAccountSid, twilioAuthToken } = configs;
 
 const client = require('twilio')(twilioAccountSid, twilioAuthToken);
 const getUserDetails = require('./user_manager');

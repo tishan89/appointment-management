@@ -1,5 +1,6 @@
 const axios = require('axios');
-import {userManagerServiceUrl, userManagerAPIkey} from './config';
+const configs = require('./config');
+const { userManagerServiceUrl, userManagerAPIkey } = configs;
 
 const api = axios.create({
     baseURL: userManagerServiceUrl,
