@@ -17,7 +17,7 @@ service /users/v1 on userListener {
         return {
             id: check random:createIntInRange(1, 100),
             name: string:toUpperAscii(email.substring(0,1)).concat((regexp:split(re `@`, email)[0]).substring(1)),
-            phoneNumber: "+18777804236",
+            phoneNumber: "+94716481328",
             email: email
         };
     }

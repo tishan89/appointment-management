@@ -68,7 +68,7 @@ async function createAppointment(appointmentDetails) {
         client.messages
             .create({
                 to: phoneNumber,
-                from: '+12312250869',
+                from: '+13612662661',
                 body: `Hi ${userName}, \nYour appointment for ${service} has been created. \n Date: ${new Date(appointmentDate).toLocaleString()}`,
             })
             .then(message => console.log(message.sid));
