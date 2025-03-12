@@ -15,3 +15,42 @@ endpoints:
     networkVisibilities:
       - Organization
     schemaFilePath: openapi.yaml
+
+configurations:
+  env:
+    - name: REDIS_URL
+      valueFrom:
+        configForm: {}
+    - name: DB_USER
+      valueFrom:
+        configForm:
+          displayName: DB User
+          required: true
+    - name: DB_PASSWORD
+      valueFrom:
+        configForm:
+          displayName: DB Password
+          type: secret
+    - name: FEATURE_FLAG
+      valueFrom:
+        configForm: 
+          displayName: Feature Flag
+          type: boolean
+  file:
+    - name: application.yaml
+      mountPath: /src/resources
+      type: yaml
+      values:
+        - name: logging
+          valueFrom:
+            configForm:
+              displayName: Logging
+              type: object
+              properties:
+                - name: logger_name
+                  displayName: Logger Name
+                - name: level
+                  displayName: Level
+                  values: #restricted values | enum
+                    - info
+                    - debug
