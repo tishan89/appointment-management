@@ -47,44 +47,23 @@ endpoints:
 
 configurations:
   env:
-    - name: REDIS_URL
+    - name: LOG_LEVEL
       valueFrom:
         configForm: {}
-    - name: DB_USER
-      valueFrom:
-        configForm:
-          displayName: DB User
-          required: true
-    - name: DB_PASSWORD
-      valueFrom:
-        configForm:
-          displayName: DB Password
-          type: secret
-    - name: FEATURE_FLAG
-      valueFrom:
-        configForm: 
-          displayName: Feature Flag
-          type: boolean
+        required: true
+    
   file:
-    - name: application.yaml
+    - name: application.properties
       mountPath: /src/resources
       type: yaml
       values:
-        - name: logging
+        - name: thread.pool.size
           valueFrom:
             configForm:
-              displayName: Logging
-              type: object
-              properties:
-                - name: logger_name
-                  displayName: Logger Name
-                - name: level
-                  displayName: Level
-                  values: #restricted values | enum
-                    - info
-                    - debug
-    - name: TRACING_ENABLED
-      valueFrom:
-        configForm: 
-          displayName: Tracing Enabled
-          type: boolean
+              displayName: Thread Pool Size
+              required: true
+        - name: request.timeout
+          valueFrom:
+            configForm:
+              displayName: Request Timeout
+              required: true
