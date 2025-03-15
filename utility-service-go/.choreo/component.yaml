@@ -83,3 +83,8 @@ configurations:
                   values: #restricted values | enum
                     - info
                     - debug
+    - name: TRACING_ENABLED
+      valueFrom:
+        configForm: 
+          displayName: Tracing Enabled
+          type: boolean
