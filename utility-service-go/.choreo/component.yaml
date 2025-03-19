@@ -46,11 +46,6 @@ endpoints:
     schemaFilePath: openapi.yaml
 
 configurations:
-  env:
-    - name: LOG_LEVEL
-      valueFrom:
-        configForm: {}
-        required: true
     
   file:
     - name: application.properties
